@@ -1,0 +1,554 @@
+<html>
+<head>
+<meta name="author" content="Ridley/Esex">
+<title>
+testing
+</title>
+
+<style>
+body
+{
+	font-family: "Times New Roman", Times, serif;
+}
+.ans {
+	display: none;
+}
+.ansDis {
+	border: 3px solid #7B7B7B;
+	background-color: #7B7B7B;
+}
+td {
+	border: 3px solid #7B7B7B;
+	background-color: #7B7B7B;
+}
+.oddcell {
+	background-color: #FA9907;
+}
+
+.evencell {
+	background-color: #E9C001;
+}
+
+.instr {
+	border: 1px solid #767676;
+	border-radius: 5px;
+	background-color: #EFEFEF;
+	width: 500px;
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+</style>
+
+<script>
+
+window.addEventListener('paste', e => {
+	if (e.clipboardData.files.length > 0) {
+		const fileInput = document.querySelector("#attach");
+		fileInput.files = e.clipboardData.files;
+		test();
+    }
+});
+
+if ( window.history.replaceState ) {
+	window.history.replaceState( null, null, window.location.href );
+}
+
+var startIndex = 0;
+
+var cnvs = document.getElementById("cnvs");
+var ctx = cnvs.getContext("2d");
+
+var imgData = ctx.GetImageData(0,0,cnvs.width,cnvs.height);
+var data = data = imgData.data;
+
+var img = document.getElementById("ans");
+
+var iIter = 0;
+
+var newI = document.getElementById("newI");
+var nCtx = newI.getContext("2d");
+
+var board = [];
+
+//var newImageData = [];
+
+function test() {
+	let file = attach.files[0];
+	console.log(file);
+	
+	let url = '';
+	ans.src = url = URL.createObjectURL(file);
+	
+	console.log(URL.createObjectURL(file));
+	
+	resetOpacity();
+	
+	document.getElementById("ansDis").hidden = false;
+}
+
+function resetOpacity() {
+	for (i = 1; i < 82; ++i) {
+		document.getElementById(i).style.opacity = '100%';
+	}
+}
+
+function draw() {
+
+	cnvs = document.getElementById("cnvs");
+	ctx = cnvs.getContext("2d");
+
+	img = document.getElementById("ans");
+	
+	cnvs.width = img.width;
+	cnvs.height = img.height;
+
+	ctx.drawImage(img,0,0);
+	
+	findBoard();
+}
+
+function drawNew(newData) {
+
+	newI = document.getElementById("newI");
+	newI.width = 288;
+	newI.height = 288;
+	nCtx = newI.getContext("2d");
+	
+	let imageData = nCtx.createImageData(288,288);
+	
+	for (let i = 0; i < newData.length; i++) {
+	
+		imageData.data[i] = newData[i];
+	
+	}
+	
+	nCtx.putImageData(imageData, 0, 0);
+
+}
+
+function pixelArrayToRune(array) {
+	if(array[20] == 250 && array[21] == 153 && array[22] == 7) {
+		return 0;
+	} else if(array[20] == 233 && array[21] == 192 && array[22] == 1) {
+		return 0;
+	} else if(array[36] >= 0 && array[36] <= 10 && array[37] >= 0 && array[37] <= 10 && array[38] >= 0 && array[38] <= 10) {
+		// BODY: 36, 40, 44 (5,4,4)
+		return 8;
+	} else if(array[40] >= 0 && array[40] <= 10 && array[41] >= 0 && array[41] <= 10 && array[42] >= 0 && array[42] <= 10) {
+		return 8;
+	} else if(array[44] >= 0 && array[44] <= 10 && array[45] >= 0 && array[45] <= 10 && array[46] >= 0 && array[46] <= 10) {
+		return 8;
+	} else if(array[28] >= 65 && array[28] <= 75 && array[29] >= 33 && array[29] <= 43 && array[30] >= 0 && array[30] <= 10) {
+		// EARTH: 28, 32, 36 (70,38,3)
+		return 2;
+	} else if(array[32] >= 65 && array[32] <= 75 && array[33] >= 33 && array[33] <= 43 && array[34] >= 0 && array[34] <= 10) {
+		return 2;
+	} else if(array[36] >= 65 && array[36] <= 75 && array[37] >= 33 && array[37] <= 43 && array[38] >= 0 && array[38] <= 10) {
+		return 2;
+	} else if(array[32] >= 130 && array[32] <= 140 && array[33] >= 7 && array[33] <= 17 && array[34] >= 0 && array[34] <= 10) {
+		// FIRE: 32, 36, 40 (134,12,5)
+		return 3;
+	} else if(array[36] >= 130 && array[36] <= 140 && array[37] >= 7 && array[37] <= 17 && array[38] >= 0 && array[38] <= 10) {
+		return 3;
+	} else if(array[40] >= 130 && array[40] <= 140 && array[41] >= 7 && array[41] <= 17 && array[42] >= 0 && array[42] <= 10) {
+		return 3;
+	} else if(array[24] >= 210 && array[24] <= 220 && array[25] >= 205 && array[25] <= 215 && array[26] >= 205 && array[26] <= 215) {
+		// AIR: 24, 28, 32 (215,210,210)
+		return 4;
+	} else if(array[28] >= 210 && array[28] <= 220 && array[29] >= 205 && array[29] <= 215 && array[30] >= 205 && array[30] <= 215) {
+		return 4;
+	} else if(array[32] >= 210 && array[32] <= 220 && array[33] >= 205 && array[33] <= 215 && array[34] >= 205 && array[34] <= 215) {
+		return 4;
+	} else if(array[32] >= 204 && array[32] <= 214 && array[33] >= 129 && array[33] <= 139 && array[34] >= 3 && array[34] <= 13) {
+		// CHAOS: 32, 36, 40 (209,134,8)
+		return 6;
+	} else if(array[36] >= 204 && array[36] <= 214 && array[37] >= 129 && array[37] <= 139 && array[38] >= 3 && array[38] <= 13) {
+		return 6;
+	} else if(array[40] >= 204 && array[40] <= 214 && array[41] >= 129 && array[41] <= 139 && array[42] >= 3 && array[42] <= 13) {
+		return 6;
+	} else if(array[48] >= 210 && array[48] <= 220 && array[49] >= 205 && array[49] <= 215 && array[50] >= 205 && array[50] <= 215) {
+		// DEATH: 48, 52, 56 (215,210,210)
+		return 5;
+	} else if(array[52] >= 210 && array[52] <= 220 && array[53] >= 205 && array[53] <= 215 && array[54] >= 205 && array[54] <= 215) {
+		return 5;
+	} else if(array[56] >= 210 && array[56] <= 220 && array[57] >= 205 && array[57] <= 215 && array[58] >= 205 && array[58] <= 215) {
+		return 5;
+	} else if(array[36] >= 32 && array[36] <= 42 && array[37] >= 31 && array[37] <= 41 && array[38] >= 0 && array[38] <= 10) {
+		// MIND: 36, 40, 44 (37,36,1)
+		return 7;
+	} else if(array[40] >= 32 && array[40] <= 42 && array[41] >= 31 && array[41] <= 41 && array[42] >= 0 && array[42] <= 10) {
+		return 7;
+	} else if(array[44] >= 32 && array[44] <= 42 && array[45] >= 31 && array[45] <= 41 && array[46] >= 0 && array[46] <= 10) {
+		return 7;
+	} else if(array[24] >= 3 && array[24] <= 13 && array[25] >= 7 && array[25] <= 17 && array[26] >= 204 && array[26] <= 214) {
+		// LAW: 24, 28, 32 (8,12,209)
+		return 9;
+	} else if(array[28] >= 3 && array[28] <= 13 && array[29] >= 7 && array[29] <= 17 && array[30] >= 204 && array[30] <= 214) {
+		return 9;
+	} else if(array[32] >= 3 && array[32] <= 13 && array[33] >= 7 && array[33] <= 17 && array[37] >= 204 && array[34] <= 214) {
+		return 9;
+	} else if(array[48] >= 0 && array[48] <= 10 && array[49] >= 3 && array[49] <= 13 && array[50] >= 129 && array[50] <= 139) {
+		// WATER: 48, 52, 56 (5,8,134)
+		return 1;
+	} else if(array[52] >= 0 && array[52] <= 10 && array[53] >= 3 && array[53] <= 13 && array[54] >= 129 && array[54] <= 139) {
+		return 1;
+	} else if(array[56] >= 0 && array[56] <= 10 && array[57] >= 3 && array[57] <= 13 && array[58] >= 129 && array[58] <= 139) {
+		return 1;
+	} else {
+		return 0;
+	}
+	
+	//check body before law and law before water
+
+}
+
+//not working as intended. colors seems to be a lil different between images
+
+function indexToRC(index) {
+	return { row: Math.floor(index / 9), col: index % 9 };
+}
+
+function rcToIndex(row, col) {
+	return row * 9 + col;
+}
+
+function getChoices(board, index) {
+	let choices = [];
+	for (let value = 1; value <= 9; ++value) {
+		if (acceptable(board, index, value)) {
+			choices.push(value);
+		}
+ 	}
+	return choices;
+}
+
+function acceptable(board, index, value) {
+	let { row, col } = indexToRC(index);
+	
+	for (let r = 0; r < 9; ++r) {
+		if (board[rcToIndex(r, col)] == value) return false;
+	}
+	
+	for (let c = 0; c < 9; ++c) {
+		if (board[rcToIndex(row, c)] == value) return false;
+	}
+	
+	let r1 = Math.floor(row / 3) * 3;
+	let c1 = Math.floor(col / 3) * 3;
+	for (let r = r1; r < r1 + 3; ++r) {
+		for (let c = c1; c < c1 + 3; ++c) {
+			if (board[rcToIndex(r, c)] == value) return false;
+		}
+	}
+	
+	return true;
+}
+
+function solve(index) {
+	while (index < 81 && board[index]) {
+		++index;
+	}
+	if (index == 81) return true;
+	let moves = getChoices(board,index);
+	for (let m of moves) {
+		board[index] = m;
+		if(solve(index + 1)) {
+			return true;
+		}
+	}
+	board[index] = 0;
+	return false;
+}
+
+function numToRune(n) {
+	switch (n) {
+		case 1:
+			return 'https://i.imgur.com/A5RuJAq.png';
+			break;
+		case 2:
+			return 'https://i.imgur.com/ccb6XIr.png';
+			break;
+		case 3:
+			return 'https://i.imgur.com/aDiGn0S.png';
+			break;
+		case 4:
+			return 'https://i.imgur.com/dBQsmcm.png';
+			break;
+		case 5:
+			return 'https://i.imgur.com/NvcjdG6.png';
+			break;
+		case 6:
+			return 'https://i.imgur.com/DMjSBsz.png';
+			break;
+		case 7:
+			return 'https://i.imgur.com/hcjMbjk.png';
+			break;
+		case 8:
+			return 'https://i.imgur.com/u1ne9S7.png';
+			break;
+		case 9:
+			return 'https://i.imgur.com/vGL0zt9.png';
+			break;
+			
+	}
+}
+
+function setAns(brd) {
+	for (let i = 1; i < 82; ++i) {
+			document.getElementById(i).src = numToRune(brd[i-1]);
+	}
+}
+
+function highlightIn(brd) {
+
+	for (let i = 1; i <82; ++i) {
+	
+		if (brd[i-1] != 0) {
+		
+			document.getElementById(i).style.opacity = '50%';
+		
+		}
+	
+	}
+
+}
+
+function testFunc() {
+	solve(0);
+	console.log(board);
+	//console.log(boardBase);
+	setAns(board);
+}
+
+function findBoard() {
+
+	cnvs = document.getElementById("cnvs");
+	ctx = cnvs.getContext("2d"); 
+	
+	imgData = ctx.getImageData(0,0,cnvs.width,cnvs.height);
+	data = imgData.data;
+	
+	var rowPixelArray = [];
+	var rowCount = 17;
+	var colCount = 0;
+	
+	var r = 0;
+	var g = 0;
+	var b = 0;
+	var a = 0;
+	
+	var boardT = [];
+	
+	for(let i = 0; i < data.length; i += 4) {
+	
+		r = data[i];
+		g = data[i + 1];
+		b = data[i + 2];
+		a = data[i + 3];
+		
+		//use separte counter and only take a line of pixels from each cell
+		//something in the middle
+		//sum the colors and use num to figure out what rune is in the cell
+		
+		if((r == 250 && g == 153 && b == 7) || (r == 233 && g == 192 && b == 1) || (r == 0 && g == 0 && b == 1)) {
+		
+			for (k = 0; k < 128; k += 4) {
+			
+				iIter = i + k;
+			
+				r = data[iIter]
+				g = data[iIter + 1]
+				b = data[iIter + 2]
+				a = data[iIter + 3]
+				
+				rowPixelArray.push(r);
+				rowPixelArray.push(g);
+				rowPixelArray.push(b);
+				rowPixelArray.push(a);
+			
+			}
+			
+			colCount++;
+			
+			if(rowCount == 32) {
+				//record
+				
+				let rNum = 0;
+				
+				
+				
+				boardT.push(pixelArrayToRune(rowPixelArray));
+				
+				//console.log(pixelsToColorAvg(rowPixelArray));
+				
+				if(colCount == 9) {
+				
+					rowCount = 0;
+				
+				}
+				
+				
+			}
+			
+			rowPixelArray = [];
+			
+			if (colCount == 9) {
+			
+				rowCount++;
+				
+				colCount = 0;
+				
+			}
+			
+			i = iIter;
+			
+		}
+		
+		/*if(newImageData.length == 331776) {
+		
+			drawNew(newImageData);
+		
+			break;
+		
+		}*/
+	
+	}
+	
+	
+	//BOARD TO SOLVE
+	console.log(boardT);
+	board = boardT;
+	highlightIn(boardT);
+	testFunc();
+
+}
+
+</script>
+</head>
+<body>
+<div class="content" align="center">
+<input type="file" id="attach" accept="image/*" />
+<button onClick="test()" id="goButton">submit</button>
+<br />
+<br />
+
+<canvas id="cnvs" align="center" hidden="true"></canvas>
+
+<!--SHOW SOLVED BOARD HERE-->
+<table id="ansDis" class="ansDis" align="center" hidden="true">
+	<tr>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="1"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="2"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="3"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="4"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="5"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="6"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="7"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="8"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="9"/></td>
+	</tr>
+	<tr>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="10"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="11"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="12"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="13"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="14"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="15"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="16"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="17"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="18"/></td>
+	</tr>
+	<tr>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="19"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="20"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="21"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="22"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="23"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="24"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="25"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="26"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="27"/></td>
+	</tr>
+	<tr>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="28"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="29"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="30"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="31"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="32"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="33"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="34"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="35"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="36"/></td>
+	</tr>
+	<tr>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="37"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="38"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="39"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="40"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="41"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="42"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="43"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="44"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="45"/></td>
+	</tr>
+	<tr>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="46"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="47"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="48"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="49"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="50"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="51"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="52"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="53"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="54"/></td>
+	</tr>
+	<tr>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="55"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="56"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="57"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="58"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="59"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="60"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="61"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="62"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="63"/></td>
+	</tr>
+	<tr>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="64"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="65"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="66"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="67"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="68"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="69"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="70"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="71"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="72"/></td>
+	</tr>
+	<tr>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="73"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="74"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="75"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="76"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="77"/></td>
+		<td class="evencell"><img src="https://i.imgur.com/hpyD1o0.png" id="78"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="79"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="80"/></td>
+		<td class="oddcell"><img src="https://i.imgur.com/hpyD1o0.png" id="81"/></td>
+	</tr>
+</table>
+<br />
+<img src="" id="ans" class="ans" onload="draw()"/>
+
+<div class="instr">
+<b>Instructions</b>
+<ul>
+<li>Must be in 1x scale</li>
+<li>Screenshot must contain entire board</li>
+<li>Can paste images in as well</li>
+</ul>
+</div>
+
+</div>
+</body>
+</html>
