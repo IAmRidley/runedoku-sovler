@@ -5,7 +5,7 @@
 Runedoku Solver
 </title>
 <script>
-var rune = "nullrune.png"
+var rune = "images\nullrune.png"
 var num = 0;
 
 var board = [
@@ -22,34 +22,34 @@ var board = [
 
 function runeToNum(r) {
 	switch (r) {
-        case 'nullrune.png':
+        case 'images\nullrune.png':
             num = 0;
             break;
-        case 'waterrune.png':
+        case 'images\waterrune.png':
             num = 1;
             break;
-        case 'earthrune.png':
+        case 'images\earthrune.png':
             num = 2;
             break;
-        case 'firerune.png':
+        case 'images\firerune.png':
             num = 3;
             break;
-        case 'airrune.png':
+        case 'images\airrune.png':
             num = 4;
             break;
-        case 'deathrune.png':
+        case 'images\deathrune.png':
             num = 5;
             break;
-        case 'chaosrune.png':
+        case 'images\chaosrune.png':
             num = 6;
             break;
-        case 'mindrune.png':
+        case 'images\mindrune.png':
             num = 7;
             break;
-        case 'bodyrune.png':
+        case 'images\bodyrune.png':
 			num = 8;
             break;
-        case 'lawrune.png':
+        case 'images\lawrune.png':
             num = 9;
             break;
     }
@@ -58,31 +58,31 @@ function runeToNum(r) {
 function numToRune(n) {
 	switch (n) {
 		case 1:
-			rune = 'waterrune.png';
+			rune = 'images\images\waterrune.png';
 			break;
 		case 2:
-			rune = 'earthrune.png';
+			rune = 'images\earthrune.png';
 			break;
 		case 3:
-			rune = 'firerune.png';
+			rune = 'images\firerune.png';
 			break;
 		case 4:
-			rune = 'airrune.png';
+			rune = 'images\airrune.png';
 			break;
 		case 5:
-			rune = 'deathrune.png';
+			rune = 'images\deathrune.png';
 			break;
 		case 6:
-			rune = 'chaosrune.png';
+			rune = 'images\chaosrune.png';
 			break;
 		case 7:
-			rune = 'mindrune.png';
+			rune = 'images\mindrune.png';
 			break;
 		case 8:
-			rune = 'bodyrune.png';
+			rune = 'images\bodyrune.png';
 			break;
 		case 9:
-			rune = 'lawrune.png';
+			rune = 'images\lawrune.png';
 			break;
 			
 	}
@@ -379,24 +379,24 @@ background-color: #494949;
                     <!--can use brs, but is there a better way to move selectors down? Could also have blank images in rows-->
 
                     <tr>
-                        <td class="selector"><button onclick="setSelector('mindrune.png')"><img src="mindrune2.png" id="mindrune" /></button></td>
-                        <td class="selector"><button onclick="setSelector('nullrune.png')"><img src="nullrune2.png" id="nullrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\mindrune.png')"><img src="images\mindrune2.png" id="mindrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\nullrune.png')"><img src="images\nullrune2.png" id="nullrune" /></button></td>
                     </tr>
                     <tr>
-                        <td class="selector"><button onclick="setSelector('firerune.png')"><img src="firerune2.png" id="firerune" /></button></td>
-                        <td class="selector"><button onclick="setSelector('bodyrune.png')"><img src="bodyrune2.png" id="bodyrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\firerune.png')"><img src="images\firerune2.png" id="firerune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\bodyrune.png')"><img src="images\bodyrune2.png" id="bodyrune" /></button></td>
                     </tr>
                     <tr>
-                        <td class="selector"><button onclick="setSelector('airrune.png')"><img src="airrune2.png" id="airrune" /></button></td>
-                        <td class="selector"><button onclick="setSelector('deathrune.png')"><img src="deathrune2.png" id="deathrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\airrune.png')"><img src="images\airrune2.png" id="airrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\deathrune.png')"><img src="images\deathrune2.png" id="deathrune" /></button></td>
                     </tr>
 					<tr>
-                        <td class="selector"><button onclick="setSelector('waterrune.png')"><img src="waterrune2.png" id="waterrune" /></button></td>
-                        <td class="selector"><button onclick="setSelector('chaosrune.png')"><img src="chaosrune2.png" id="chaosrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\waterrune.png')"><img src="images\waterrune2.png" id="waterrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\chaosrune.png')"><img src="images\chaosrune2.png" id="chaosrune" /></button></td>
                     </tr>
                     <tr>
-                        <td class="selector"><button onclick="setSelector('earthrune.png')"><img src="earthrune2.png" id="earthrune" /></button></td>
-                        <td class="selector"><button onclick="setSelector('lawrune.png')"><img src="lawrune2.png" id="lawrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\earthrune.png')"><img src="images\earthrune2.png" id="earthrune" /></button></td>
+                        <td class="selector"><button onclick="setSelector('images\lawrune.png')"><img src="images\lawrune2.png" id="lawrune" /></button></td>
                     </tr>
                 </table>             
             </td>
@@ -404,112 +404,112 @@ background-color: #494949;
             <td class="outerboard">
                 <table>
                     <tr>
-						<td class="oddcell"><button onclick="updateBoard(0,0,0)"><img src="nullrune.png" id="0"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(0,1,1)"><img src="nullrune.png" id="1"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(0,2,2)"><img src="nullrune.png" id="2"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(0,3,3)"><img src="nullrune.png" id="3"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(0,4,4)"><img src="nullrune.png" id="4"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(0,5,5)"><img src="nullrune.png" id="5"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(0,6,6)"><img src="nullrune.png" id="6"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(0,7,7)"><img src="nullrune.png" id="7"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(0,8,8)"><img src="nullrune.png" id="8"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(0,0,0)"><img src="images\nullrune.png" id="0"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(0,1,1)"><img src="images\nullrune.png" id="1"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(0,2,2)"><img src="images\nullrune.png" id="2"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(0,3,3)"><img src="images\nullrune.png" id="3"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(0,4,4)"><img src="images\nullrune.png" id="4"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(0,5,5)"><img src="images\nullrune.png" id="5"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(0,6,6)"><img src="images\nullrune.png" id="6"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(0,7,7)"><img src="images\nullrune.png" id="7"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(0,8,8)"><img src="images\nullrune.png" id="8"/></button></td>
                     </tr>
 
                     <tr>
-						<td class="oddcell"><button onclick="updateBoard(1,0,9)"><img src="nullrune.png" id="9"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(1,1,10)"><img src="nullrune.png" id="10"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(1,2,11)"><img src="nullrune.png" id="11"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(1,3,12)"><img src="nullrune.png" id="12"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(1,4,13)"><img src="nullrune.png" id="13"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(1,5,14)"><img src="nullrune.png" id="14"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(1,6,15)"><img src="nullrune.png" id="15"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(1,7,16)"><img src="nullrune.png" id="16"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(1,8,17)"><img src="nullrune.png" id="17"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(1,0,9)"><img src="images\nullrune.png" id="9"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(1,1,10)"><img src="images\nullrune.png" id="10"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(1,2,11)"><img src="images\nullrune.png" id="11"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(1,3,12)"><img src="images\nullrune.png" id="12"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(1,4,13)"><img src="images\nullrune.png" id="13"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(1,5,14)"><img src="images\nullrune.png" id="14"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(1,6,15)"><img src="images\nullrune.png" id="15"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(1,7,16)"><img src="images\nullrune.png" id="16"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(1,8,17)"><img src="images\nullrune.png" id="17"/></button></td>
                     </tr>
 
                     <tr>
-						<td class="oddcell"><button onclick="updateBoard(2,0,18)"><img src="nullrune.png" id="18"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(2,1,19)"><img src="nullrune.png" id="19"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(2,2,20)"><img src="nullrune.png" id="20"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(2,3,21)"><img src="nullrune.png" id="21"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(2,4,22)"><img src="nullrune.png" id="22"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(2,5,23)"><img src="nullrune.png" id="23"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(2,6,24)"><img src="nullrune.png" id="24"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(2,7,25)"><img src="nullrune.png" id="25"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(2,8,26)"><img src="nullrune.png" id="26"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(2,0,18)"><img src="images\nullrune.png" id="18"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(2,1,19)"><img src="images\nullrune.png" id="19"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(2,2,20)"><img src="images\nullrune.png" id="20"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(2,3,21)"><img src="images\nullrune.png" id="21"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(2,4,22)"><img src="images\nullrune.png" id="22"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(2,5,23)"><img src="images\nullrune.png" id="23"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(2,6,24)"><img src="images\nullrune.png" id="24"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(2,7,25)"><img src="images\nullrune.png" id="25"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(2,8,26)"><img src="images\nullrune.png" id="26"/></button></td>
                     </tr>
 
                     <tr>
-						<td class="evencell"><button onclick="updateBoard(3,0,27)"><img src="nullrune.png" id="27"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(3,1,28)"><img src="nullrune.png" id="28"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(3,2,29)"><img src="nullrune.png" id="29"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(3,3,30)"><img src="nullrune.png" id="30"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(3,4,31)"><img src="nullrune.png" id="31"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(3,5,32)"><img src="nullrune.png" id="32"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(3,6,33)"><img src="nullrune.png" id="33"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(3,7,34)"><img src="nullrune.png" id="34"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(3,8,35)"><img src="nullrune.png" id="35"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(3,0,27)"><img src="images\nullrune.png" id="27"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(3,1,28)"><img src="images\nullrune.png" id="28"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(3,2,29)"><img src="images\nullrune.png" id="29"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(3,3,30)"><img src="images\nullrune.png" id="30"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(3,4,31)"><img src="images\nullrune.png" id="31"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(3,5,32)"><img src="images\nullrune.png" id="32"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(3,6,33)"><img src="images\nullrune.png" id="33"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(3,7,34)"><img src="images\nullrune.png" id="34"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(3,8,35)"><img src="images\nullrune.png" id="35"/></button></td>
                     </tr>
 
                     <tr>
-						<td class="evencell"><button onclick="updateBoard(4,0,36)"><img src="nullrune.png" id="36"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(4,1,37)"><img src="nullrune.png" id="37"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(4,2,38)"><img src="nullrune.png" id="38"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(4,3,39)"><img src="nullrune.png" id="39"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(4,4,40)"><img src="nullrune.png" id="40"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(4,5,41)"><img src="nullrune.png" id="41"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(4,6,42)"><img src="nullrune.png" id="42"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(4,7,43)"><img src="nullrune.png" id="43"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(4,8,44)"><img src="nullrune.png" id="44"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(4,0,36)"><img src="images\nullrune.png" id="36"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(4,1,37)"><img src="images\nullrune.png" id="37"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(4,2,38)"><img src="images\nullrune.png" id="38"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(4,3,39)"><img src="images\nullrune.png" id="39"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(4,4,40)"><img src="images\nullrune.png" id="40"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(4,5,41)"><img src="images\nullrune.png" id="41"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(4,6,42)"><img src="images\nullrune.png" id="42"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(4,7,43)"><img src="images\nullrune.png" id="43"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(4,8,44)"><img src="images\nullrune.png" id="44"/></button></td>
                     </tr>
 
                     <tr>
-						<td class="evencell"><button onclick="updateBoard(5,0,45)"><img src="nullrune.png" id="45"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(5,1,46)"><img src="nullrune.png" id="46"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(5,2,47)"><img src="nullrune.png" id="47"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(5,3,48)"><img src="nullrune.png" id="48"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(5,4,49)"><img src="nullrune.png" id="49"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(5,5,50)"><img src="nullrune.png" id="50"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(5,6,51)"><img src="nullrune.png" id="51"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(5,7,52)"><img src="nullrune.png" id="52"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(5,8,53)"><img src="nullrune.png" id="53"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(5,0,45)"><img src="images\nullrune.png" id="45"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(5,1,46)"><img src="images\nullrune.png" id="46"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(5,2,47)"><img src="images\nullrune.png" id="47"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(5,3,48)"><img src="images\nullrune.png" id="48"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(5,4,49)"><img src="images\nullrune.png" id="49"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(5,5,50)"><img src="images\nullrune.png" id="50"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(5,6,51)"><img src="images\nullrune.png" id="51"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(5,7,52)"><img src="images\nullrune.png" id="52"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(5,8,53)"><img src="images\nullrune.png" id="53"/></button></td>
                     </tr>
 
                     <tr>
 
-						<td class="oddcell"><button onclick="updateBoard(6,0,54)"><img src="nullrune.png" id="54"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(6,1,55)"><img src="nullrune.png" id="55"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(6,2,56)"><img src="nullrune.png" id="56"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(6,3,57)"><img src="nullrune.png" id="57"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(6,4,58)"><img src="nullrune.png" id="58"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(6,5,59)"><img src="nullrune.png" id="59"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(6,6,60)"><img src="nullrune.png" id="60"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(6,7,61)"><img src="nullrune.png" id="61"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(6,8,62)"><img src="nullrune.png" id="62"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(6,0,54)"><img src="images\nullrune.png" id="54"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(6,1,55)"><img src="images\nullrune.png" id="55"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(6,2,56)"><img src="images\nullrune.png" id="56"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(6,3,57)"><img src="images\nullrune.png" id="57"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(6,4,58)"><img src="images\nullrune.png" id="58"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(6,5,59)"><img src="images\nullrune.png" id="59"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(6,6,60)"><img src="images\nullrune.png" id="60"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(6,7,61)"><img src="images\nullrune.png" id="61"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(6,8,62)"><img src="images\nullrune.png" id="62"/></button></td>
                     </tr>
 
                     <tr>
-						<td class="oddcell"><button onclick="updateBoard(7,0,63)"><img src="nullrune.png" id="63"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(7,1,64)"><img src="nullrune.png" id="64"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(7,2,65)"><img src="nullrune.png" id="65"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(7,3,66)"><img src="nullrune.png" id="66"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(7,4,67)"><img src="nullrune.png" id="67"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(7,5,68)"><img src="nullrune.png" id="68"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(7,6,69)"><img src="nullrune.png" id="69"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(7,7,70)"><img src="nullrune.png" id="70"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(7,8,71)"><img src="nullrune.png" id="71"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(7,0,63)"><img src="images\nullrune.png" id="63"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(7,1,64)"><img src="images\nullrune.png" id="64"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(7,2,65)"><img src="images\nullrune.png" id="65"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(7,3,66)"><img src="images\nullrune.png" id="66"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(7,4,67)"><img src="images\nullrune.png" id="67"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(7,5,68)"><img src="images\nullrune.png" id="68"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(7,6,69)"><img src="images\nullrune.png" id="69"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(7,7,70)"><img src="images\nullrune.png" id="70"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(7,8,71)"><img src="images\nullrune.png" id="71"/></button></td>
                     </tr>
 
                     <tr>
-						<td class="oddcell"><button onclick="updateBoard(8,0,72)"><img src="nullrune.png" id="72"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(8,1,73)"><img src="nullrune.png" id="73"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(8,2,74)"><img src="nullrune.png" id="74"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(8,3,75)"><img src="nullrune.png" id="75"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(8,4,76)"><img src="nullrune.png" id="76"/></button></td>
-						<td class="evencell"><button onclick="updateBoard(8,5,77)"><img src="nullrune.png" id="77"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(8,6,78)"><img src="nullrune.png" id="78"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(8,7,79)"><img src="nullrune.png" id="79"/></button></td>
-						<td class="oddcell"><button onclick="updateBoard(8,8,80)"><img src="nullrune.png" id="80"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(8,0,72)"><img src="images\nullrune.png" id="72"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(8,1,73)"><img src="images\nullrune.png" id="73"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(8,2,74)"><img src="images\nullrune.png" id="74"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(8,3,75)"><img src="images\nullrune.png" id="75"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(8,4,76)"><img src="images\nullrune.png" id="76"/></button></td>
+						<td class="evencell"><button onclick="updateBoard(8,5,77)"><img src="images\nullrune.png" id="77"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(8,6,78)"><img src="images\nullrune.png" id="78"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(8,7,79)"><img src="images\nullrune.png" id="79"/></button></td>
+						<td class="oddcell"><button onclick="updateBoard(8,8,80)"><img src="images\nullrune.png" id="80"/></button></td>
                     </tr>
                 </table>
             </td>
